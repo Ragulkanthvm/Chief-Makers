@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Startup Aid - Application Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141413;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            animation: slideUp 0.8s ease-in-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background: #333;
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            background: #444;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            animation: bounceIn 1s ease-in-out;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff3b2f;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Startup Aid - Application Form</h2>
+        <form>
+            <label>Team Leader Name:</label>
+            <input type="text" name="team_leader" placeholder="Enter team leader name">
+            
+            <label>Startup Name:</label>
+            <input type="text" name="startup_name" placeholder="Enter startup name">
+            
+            <label>Startup Value Proposition (Problem & Solution) (300-500 Words):</label>
+            <textarea name="value_proposition" rows="10" placeholder="Describe your startup's problem and solution"></textarea>
+            
+            <label>Startup Formation Date:</label>
+            <input type="date" name="formation_date">
+            
+            <label>Your Website (If Any):</label>
+            <input type="url" name="website" placeholder="Enter website URL">
+            
+            <label>Startup Category:</label>
+            <select name="category">
+                <option value="">--Select--</option>
+                <option value="Social Entrepreneurship">Social Entrepreneurship</option>
+                <option value="Commercial">Commercial</option>
+            </select>
+            
+            <label>Sub-category:</label>
+            <select name="sub_category">
+                <option value="">--Select--</option>
+                <option value="Technology">Technology</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Education">Education</option>
+                <option value="Others">Others</option>
+            </select>
+            
+            <label>Number of co-founders/Team Members:</label>
+            <input type="number" name="team_members" placeholder="Enter number of team members">
+            
+            <label>Do you have full-time co-founder/Team member?</label>
+            <select name="fulltime_cofounder">
+                <option value="">--Select--</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            <label>What investment stage is your startup right now?</label>
+            <select name="investment_stage">
+                <option value="">--Select--</option>
+                <option value="Idea Stage">Idea Stage</option>
+                <option value="Seed Stage">Seed Stage</option>
+                <option value="Growth Stage">Growth Stage</option>
+            </select>
+            
+            <label>Investors:</label>
+            <input type="text" name="investors" placeholder="List investors if any">
+            
+            <label>Seed Funded:</label>
+            <input type="text" name="seed_funded" placeholder="Enter funding details">
+            
+            <label>Friends/Family:</label>
+            <input type="text" name="friends_family" placeholder="Enter support details">
+            
+            <label>Minimum Viable Product (MVP) is in Place?</label>
+            <select name="mvp">
+                <option value="">--Select--</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            <label>Email Contact:</label>
+            <input type="email" name="email" placeholder="Enter email address">
+            
+            <label>Mobile Contact:</label>
+            <input type="tel" name="mobile" placeholder="Enter mobile number">
+            
+            <label>Country:</label>
+            <input type="text" name="country" placeholder="Enter country">
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

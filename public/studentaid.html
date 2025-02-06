@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Basic Reset for padding/margins */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Make the form responsive */
+        .responsive-form {
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Label styles */
+        .responsive-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Textarea styles */
+        .responsive-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Input submit button styles */
+        .responsive-form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Input submit button hover effect */
+        .responsive-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Mobile Specific Styles */
+        @media (max-width: 768px) {
+            .responsive-form textarea {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .responsive-form input[type="submit"] {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function countWords(str) {
+            return str.trim().split(/\s+/).length;
+        }
+
+        function validateForm() {
+            let fields = [
+                { id: 'q1', min: 400, max: 600 },
+                { id: 'q2', min: 400, max: 600 },
+                { id: 'q3', min: 150, max: 250 },
+                { id: 'q4', min: 300, max: 500 },
+                { id: 'q5', min: 100, max: 300 },
+                { id: 'q6', min: 100, max: 200 }
+            ];
+            
+            for (let field of fields) {
+                let text = document.getElementById(field.id).value;
+                let wordCount = countWords(text);
+                
+                if (wordCount < field.min || wordCount > field.max) {
+                    alert(`Question ${field.id.slice(1)} must be between ${field.min} and ${field.max} words. Current count: ${wordCount}`);
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+    <style>
+        .one {
+            font-family: Arial, sans-serif;
+            background: rgb(20, 20, 19);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 10px;
+        }
+        .two {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            width: 100%;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .three {
+            display: block;
+            margin: 15px 0 8px;
+            font-weight: bold;
+            text-align: left;
+            animation: fadeInLeft 0.8s ease-in-out;
+        }
+        .four {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background: #333;
+            color: white;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .five {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #ff6f61;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            animation: bounceIn 1s ease-in-out;
+        }
+        .five:hover {
+            background: #ff3b2f;
+        }
+    </style>
+</head>
+<div class="one">
+    <div class="two animate__animated animate__fadeInUp">
+        <h2>Student Information Form</h2>
+        <label class="three" for="language">Select Language:</label>
+        <select class="four" id="language">
+            <option value="">--Select--</option>
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+        </select>
+        <label class="three" for="name">Student Name:</label>
+        <input class="four" type="text" id="name" placeholder="Enter your name">
+        <label class="three" for="class">Class (X or XII):</label>
+        <select class="four" id="class">
+            <option value="">--Select--</option>
+            <option value="X">X</option>
+            <option value="XII">XII</option>
+        </select>
+        <label class="three" for="school">School Name:</label>
+        <input class="four" type="text" id="school" placeholder="Enter school name">
+        <label class="three" for="location">School Location:</label>
+        <input class="four" type="text" id="location" placeholder="Enter school location">
+        <label class="three" for="course">Preferred Study Course:</label>
+        <select class="four" id="course">
+            <option value="">--Select--</option>
+            <option value="Arts/Science">Arts/Science</option>
+            <option value="Engineering">Engineering</option>
+            <option value="MBBS">MBBS</option>
+            <option value="Diploma">Diploma</option>
+        </select>
+        <label class="three" for="father">Father Occupation:</label>
+        <input class="four" type="text" id="father" placeholder="Enter father's occupation">
+        <label class="three" for="mother">Mother Occupation:</label>
+        <input class="four" type="text" id="mother" placeholder="Enter mother's occupation">
+        <label class="three" for="income">Monthly Avg. Income:</label>
+        <input class="four" type="text" id="income" placeholder="Enter monthly income">
+        <label class="three" for="currency">Currency:</label>
+        <select class="four" id="currency">
+            <option value="INR">INR</option>
+            <option value="USD">USD</option>
+        </select>
+        <label class="three" for="siblings">No. of Siblings:</label>
+        <select class="four" id="siblings">
+            <option value="">--Select--</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+        </select>
+        <label class="three" for="graduate">First Generation Graduate:</label>
+        <select class="four" id="graduate">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <label class="three" for="email">Email Contact:</label>
+        <input class="four" type="email" id="email" placeholder="Enter email">
+        <label class="three" for="phone">Mobile Number:</label>
+        <input class="four" type="text" id="phone" placeholder="Enter mobile number">
+        <label class="three" for="address">Home Address:</label>
+        <textarea class="four" id="address" placeholder="Enter home address"></textarea>
+        <label class="three" for="attachment">Attachment (If Any):</label>
+        <input class="four" type="file" id="attachment">
+        <form onsubmit="return validateForm()" class="responsive-form">
+            <label for="q1">1. Challenges that you faced and related success stories (400-600 words)</label><br>
+            <textarea id="q1" name="q1" rows="10" cols="80"></textarea><br><br>
+    
+            <label for="q2">2. Why you want to study the mentioned specific course? What you aim to give back to your society after graduation? (400-600 words)</label><br>
+            <textarea id="q2" name="q2" rows="10" cols="80"></textarea><br><br>
+    
+            <label for="q3">3. What is your greatest motivation in life? (150-250 words)</label><br>
+            <textarea id="q3" name="q3" rows="5" cols="80"></textarea><br><br>
+    
+            <label for="q4">4. What are your personal and professional objectives in life? (300-500 words)</label><br>
+            <textarea id="q4" name="q4" rows="10" cols="80"></textarea><br><br>
+    
+            <label for="q5">5. What would be the next big challenge among your locality and how could you help to overcome it in the future? (100-300 words)</label><br>
+            <textarea id="q5" name="q5" rows="5" cols="80"></textarea><br><br>
+    
+            <label for="q6">6. What are your interests and hobbies outside the studies? (100-200 words)</label><br>
+            <textarea id="q6" name="q6" rows="5" cols="80"></textarea><br><br>
+    
+            
+    
+        <script>
+            // Sample form validation function (you can customize this)
+            function validateForm() {
+                // Add your validation logic here
+                alert("Form submitted successfully!");
+                return true; // You can return false to prevent form submission if validation fails
+            }
+        </script>
+    
+        <button class="five">Submit</button>
+    </div>
+</div>
+</html>
