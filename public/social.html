@@ -72,11 +72,18 @@
             100% { transform: scale(1); opacity: 1; }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+    (function(){
+        emailjs.init("1JtHNPC24XobUP_-e"); // Replace with your EmailJS public key
+    })();
+    </script>
+
 </head>
 <body>
     <div class="container">
         <h2>Join Our Social Development Movement</h2>
-        <form>
+        <form id="socialForm" onsubmit="sendSocialEmail(event)">
             <label>Name:</label>
             <input type="text" name="name" placeholder="Enter your name">
             
@@ -105,7 +112,7 @@
             </select>
             
             <label>Resume Attachment:</label>
-            <input type="file" name="resume">
+            <input type="file" name="resume" id="fileInput">
             
             <label>Why do you want to join us? (200 words):</label>
             <textarea name="why_join" rows="5" placeholder="Write your reason here..."></textarea>
@@ -116,5 +123,57 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+    <script>
+        function sendSocialEmail(event) {
+            event.preventDefault(); // Prevent form from reloading
+    
+            // Collect form data
+            var name = document.querySelector('[name="name"]').value;
+            var email = document.querySelector('[name="email"]').value;
+            var phone = document.querySelector('[name="phone"]').value;
+            var category = document.querySelector('[name="category"]').value;
+            var duration = document.querySelector('[name="duration"]').value;
+            var fileInput = document.getElementById("fileInput").files[0];
+            var why_join = document.querySelector('[name="why_join"]').value;
+            var message = document.querySelector('[name="message"]').value;
+    
+            if (!fileInput) {
+                alert("Please upload a file.");
+                return;
+            }
+    
+            // Convert file to Base64
+            var reader = new FileReader();
+            reader.readAsDataURL(fileInput);
+            reader.onload = function () {
+                var base64File = reader.result.split(",")[1]; // Extract Base64 content
+    
+                // EmailJS Parameters
+                var formData = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    category: category,
+                    duration: duration,
+                    file_attachment: base64File, // Base64 encoded file
+                    file_name: fileInput.name, // File name
+                    why_join: why_join,
+                    message: message
+                };
+    
+                // Send email via EmailJS
+                emailjs.send("service_t8l5ssf", "template_68vt26g", formData)
+                    .then(function(response) {
+                        alert("Application sent successfully!");
+                    }, function(error) {
+                        alert("Failed to send application: " + error.text);
+                    });
+            };
+    
+            reader.onerror = function (error) {
+                alert("Error reading file: " + error);
+            };
+        }
+    </script>     
 </body>
 </html>
